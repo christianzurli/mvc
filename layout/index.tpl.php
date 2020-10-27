@@ -4,18 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
-
     <title><?php echo $this->title ?></title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
-
-    <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="starter-template.css" rel="stylesheet">
 </head>
 
 <body>
@@ -56,7 +46,6 @@
 <main role="main" class="container">
 
     <div class="starter-template mt-5">
-        <h1><?php echo $this->title ?></h1>
         <?php echo $this->content ?>
     </div>
 

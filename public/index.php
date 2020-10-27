@@ -1,21 +1,34 @@
 <?php
 chdir(dirname(__DIR__));
 
-require_once __DIR__.'/../DB/DBPDO.php';
+require_once __DIR__ . '/../db/DbPDO.php';
+require_once __DIR__ . '/../db/DbFactory.php';
+require_once __DIR__ . '/../app/controllers/postController.php';
+
 $data = require __DIR__ . '/../config/database.php';
-//$conn = App\DB\DBPDO::getInstance($data);
 
-if (!defined('PDO::ATTR_DRIVER_NAME')) {
-    echo 'PDO is unavailable<br/>';
-} elseif (defined('PDO::ATTR_DRIVER_NAME')) {
-    echo 'PDO is available<br/>';
-    print_r(PDO::getAvailableDrivers());
+try {
+    $pdoConn = App\DB\DbFactory::create($data);
+    $conn = $pdoConn->getConn();
+    $controller = new \App\Controllers\postController($conn);
+    $controller->display();
+
+} catch (PDOException $exception) {
+    $exception->getMessage();
 }
-die;
 
-require_once __DIR__.'/../app/Controllers/postController.php';
 
-$controller = new \App\Controllers\postController;
 
-$controller->show(1);
-$controller->display();
+
+
+
+
+//$controller->show(1);
+/*
+$statement = $conn->query('select * from posts', PDO::FETCH_OBJ);
+if ($statement) {
+    while ($row = $statement->fetchObject()) {
+        print_r($row);
+    }
+}
+*/
