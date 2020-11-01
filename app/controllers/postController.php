@@ -8,7 +8,7 @@ class postController {
     protected $layout = 'layout/index.tpl.php';
     protected $title = 'Christian Zurli';
     protected $conn;
-    public function __construct(PDO $conn) {
+    public function __construct($conn) {
         $this->conn = $conn;
         $posts = $this->conn->query('select * from posts')->fetchAll(PDO::FETCH_OBJ);
         ob_start();
